@@ -3,7 +3,7 @@ const Controller = require("./subActivity.controller");
 router.get("/", async (req, res, next) => {
   try {
     const data = await Controller.list();
-    res.json({ data, msg: "list of all activities" });
+    res.json({ data, msg: "list of all sub activities" });
   } catch (e) {
     next(e);
   }
@@ -14,7 +14,7 @@ router.get("/:id", async (req, res, next) => {
 });
 router.post("/", async (req, res, next) => {
   const data = await Controller.create(req.body);
-  res.json({ data, msg: "added new activity" });
+  res.json({ data, msg: "added new sub activity" });
 });
 
 router.patch("/:id", async (req, res, next) => {
@@ -28,7 +28,7 @@ router.patch("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   try {
     const data = await Controller.removeById(req.params.id);
-    res.json({ data, msg: "deleted activity" });
+    res.json({ data, msg: "deleted sub activity" });
   } catch (e) {
     next(e);
   }

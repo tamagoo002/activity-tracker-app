@@ -1,5 +1,9 @@
 const Model = require("./subActivity.model");
+const activityModel = require("../activity/activity.model");
 const create = async (payload) => {
+  const { activity } = payload;
+  const activityData = await activityModel.findOne({ _id: activity });
+  if (!activityData) throw new Error("Activity not found!");
   return await Model.create(payload);
 };
 const list = async () => {
