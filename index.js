@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const PORT = Number(process.env.PORT)||8000;
 const indexRouter= require("./routes")
+const CORS= require("cors")
 
 mongoose.connect(process.env.DB_URL).then(
     ()=>{
@@ -12,7 +13,7 @@ mongoose.connect(process.env.DB_URL).then(
 
 );
 
-
+app.use(CORS());
 app.use(express.json());
 app.use("/",indexRouter);
 app.use((err, req, res, next) => {
